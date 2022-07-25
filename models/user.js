@@ -17,7 +17,8 @@ const userSchema = new Schema({
         trim: true,
         minLength: 3,
         required: true
-    }
+    },
+    posts: [Schema.Types.ObjectId]
 }, {
     timestamps: true,
     toJSON: {

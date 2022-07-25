@@ -1,0 +1,26 @@
+const mongoose = require('mongoose')
+const { Schema, model } = mongoose
+
+const replySchema = new Schema({
+    name: String,
+    content: String,
+    likes: Number
+}, {
+    timestamps: true
+})
+
+const postSchema = new Schema({
+    name: String,
+    content: String,
+    likes: Number,
+    people_attending: [],
+    maybe_attending: [],
+    event_date: Date,
+    replies: [{type: replySchema}]
+}, {
+    timestamps: true
+})
+
+const Post = model("Post", postSchema)
+
+module.exports = Post
