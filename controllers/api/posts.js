@@ -29,7 +29,7 @@ const savePost = async (req, res) => {
             res.json(error)
         }
         else {
-            User.updateOne({name: req.user.name}, {$push : {post: post._id}}, (error) => {
+            User.updateOne({name: req.user.name}, {$push : {posts: post._id}}, (error) => {
                 if (error) {
                     console.log(error)
                     res.json(error)
