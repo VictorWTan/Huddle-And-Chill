@@ -8,9 +8,19 @@ export function getAll() {
     return sendRequest(`${BASE_URL}`);
 }
 
-export function updatePost(id, post) {
+export function getOnePost(id){
+    console.log('Getting one post')
+    return sendRequest(`${BASE_URL}/${id}}`)
+}
+
+export function updatePost(id, content) {
     console.log('Running posts-api update post')
-    return sendRequest(`${BASE_URL}/${id}`, 'PUT', post)
+    const data = {
+        _id: id,
+        content: content
+    }
+    console.log(data)
+    return sendRequest(`${BASE_URL}/${id}`, 'PUT', data)
 }
 
 export function addToPosts(name, content) {

@@ -16,6 +16,20 @@ const index = async (req, res) => {
     })
 }
 
+const show = async (req, res) => {
+    console.log('Get single post')
+    Post.findOne({_id: req.params.id}, (error, data) => {
+        if (error) {
+            console.log(error)
+            res.json(error)
+        }
+        else {
+            console.log(data)
+            res.json(data)
+        }
+    })
+}
+
 const savePost = async (req, res) => {
     console.log('Saving post')
     console.log(req.user.name)
@@ -44,8 +58,8 @@ const savePost = async (req, res) => {
 }
 
 const editPost = async (req, res) => {
-    console.log('Running edit')
-    Post.updateOne({_id: req.post._id}, {$set: {content: req.body.content}}, (error) => {
+    console.log(req.body)
+    Post.updateOne({_id: req.body._id}, {$set: {content: req.body.content}}, (error) => {
         if (error) {
             console.log(error)
             res.json(error)
@@ -85,6 +99,7 @@ const getAllPosts = async (req, res) => {
 
 module.exports = {
     index,
+    show,
     savePost, 
     editPost,
     deletePost,

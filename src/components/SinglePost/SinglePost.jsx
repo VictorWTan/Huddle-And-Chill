@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import * as postsAPI from '../../utilities/posts-api'
 
 export default function SinglePost({ post, user}) {
 
@@ -13,8 +14,9 @@ export default function SinglePost({ post, user}) {
         setContent(event.target.value)
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
+        postsAPI.updatePost(post._id, content)
         setEdit(false)
     }
 
