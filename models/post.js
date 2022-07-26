@@ -12,7 +12,7 @@ const replySchema = new Schema({
 const postSchema = new Schema({
     name: String,
     content: String,
-    likes: Number,
+    likes: {type: Number, default: 0},
     people_attending: [],
     maybe_attending: [],
     event_date: Date,
