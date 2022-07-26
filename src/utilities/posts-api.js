@@ -5,7 +5,7 @@ const BASE_URL = '/api/posts';
 export function getAll() {
     // Get all posts
     console.log('Running Post-API get all')
-    return sendRequest(BASE_URL);
+    return sendRequest(`${BASE_URL}`);
 }
 
 export function updatePost(id, post) {

@@ -22,5 +22,6 @@ const postSchema = new Schema({
 })
 
 const Post = model("Post", postSchema)
+const Reply = model("Reply", replySchema)
 
-module.exports = Post
+module.exports = Post, Reply

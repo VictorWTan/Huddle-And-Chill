@@ -2,7 +2,7 @@ const Post = require('../../models/post')
 const User = require('../../models/user')
 
 const index = async (req, res) => {
-    console.log('Get current user')
+    console.log('Get current user posts')
     User.findOne({name: req.user.name}, (error, user) => {
         // If error, show error
         if (error) {
@@ -71,13 +71,14 @@ const deletePost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
     console.log('Getting all current posts')
-    Post.find({}, (error, post) => {
+    Post.find({}, (error, data) => {
         if (error) {
             console.log(error)
             res.json(error)
         }
         else {
-            console.log(res.json(post))
+            console.log(data)
+            res.json(data)
         }
     })
 }

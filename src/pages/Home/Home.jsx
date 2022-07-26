@@ -1,11 +1,11 @@
 import StatusPost from "../../components/StatusPost/StatusPost"
 import Posts from '../../components/Posts/Posts'
 
-export default function Home() {
+export default function Home({user}) {
   return (
     <>
-        <StatusPost/>
-        <Posts/>
+        <StatusPost user={user}/>
+        <Posts user={user}/>
     </>
   )
 }
