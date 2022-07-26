@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import * as postsAPI from '../../utilities/posts-api'
+import './SinglePost.css'
 
 export default function SinglePost({ post, user}) {
 
@@ -26,7 +27,7 @@ export default function SinglePost({ post, user}) {
     }
 
     return (
-        <>
+        <div className="single-post">
             <span>
                 {post.name}
             </span>
@@ -44,6 +45,6 @@ export default function SinglePost({ post, user}) {
             }
             <button onClick={handleDelete}>Delete</button>
             <br />
-        </>
+        </div>
     )
 }

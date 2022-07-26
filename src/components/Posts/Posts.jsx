@@ -2,15 +2,15 @@ import * as postsAPI from '../../utilities/posts-api'
 import { useEffect, useState } from 'react'
 import SinglePost from '../SinglePost/SinglePost'
 
-export default function Posts({user}) {
+export default function Posts({user, post}) {
 
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
         (async () => {
-            const posts = await postsAPI.getAll()
-            console.log(`Getting posts from posts.jsx ${posts}`)
-            setPosts(posts)
+            const allPosts = await postsAPI.getAll()
+            console.log(`Getting posts from posts.jsx ${allPosts}`)
+            setPosts(allPosts)
         })()
     }, [])
 
