@@ -9,6 +9,7 @@ export default function StatusPost({post, setPost, user}) {
     }
 
     const handleSubmit = (event) => {
+        event.preventDefault()
         postsAPI.addToPosts(user, content)
     }
 
@@ -17,7 +18,7 @@ export default function StatusPost({post, setPost, user}) {
             <div>Profile Picture</div>
             <form onSubmit={handleSubmit}>
                 <textarea name="status-post" value={content} onChange={handleChange} cols="30" rows="10"></textarea>
-                <input type="submit" value="Tweet" />
+                <input type="submit" value="Post" />
             </form>
         </>
     )
