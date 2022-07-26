@@ -3,7 +3,7 @@ const User = require('../../models/user')
 
 const index = async (req, res) => {
     console.log('Get current user')
-    const currentUser = User.findOne({name: req.user.name}, (error, user) => {
+    User.findOne({name: req.user.name}, (error, user) => {
         // If error, show error
         if (error) {
             console.log(error)
@@ -18,9 +18,11 @@ const index = async (req, res) => {
 
 const savePost = async (req, res) => {
     console.log('Saving post')
-    const post = Post.create({
+    console.log(req.user.name)
+    console.log(req.body)
+    Post.create({
         name: req.user.name,
-        content: req.post.content,
+        content: req.body.content,
     }, (error, post) => {
         if (error) {
             console.log(error)
@@ -34,7 +36,7 @@ const savePost = async (req, res) => {
                 }
                 else {
                     console.log('Saved post id to user')
-                    res.json(post._id)
+                    console.log(post._id)
                 }
             })
         }
@@ -69,7 +71,7 @@ const deletePost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
     console.log('Getting all current posts')
-    const allPosts = Post.find({}, (error, post) => {
+    Post.find({}, (error, post) => {
         if (error) {
             console.log(error)
             res.json(error)

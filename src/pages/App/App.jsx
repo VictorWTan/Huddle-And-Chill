@@ -17,7 +17,7 @@ export default function App() {
       <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<Home post={post} setPost={setPost}/>}/>
+          <Route path="/" element={<Home post={post} setPost={setPost} user={user}/>}/>
         </Routes>
       </>
         : 
