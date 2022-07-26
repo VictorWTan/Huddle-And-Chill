@@ -21,6 +21,49 @@ const savePost = async (req, res) => {
     const post = Post.create({
         name: req.user.name,
         content: req.post.content,
+    }, (error, post) => {
+        if (error) {
+            console.log(error)
+            res.json(error)
+        }
+        else {
+            User.updateOne({name: req.user.name}, {$push : {post: post._id}}, (error) => {
+                if (error) {
+                    console.log(error)
+                    res.json(error)
+                }
+                else {
+                    console.log('Saved post id to user')
+                    res.json(post._id)
+                }
+            })
+        }
+    })
+}
+
+const editPost = async (req, res) => {
+    console.log('Running edit')
+    Post.updateOne({_id: req.post._id}, {$set: {content: req.body.content}}, (error) => {
+        if (error) {
+            console.log(error)
+            res.json(error)
+        }
+        else {
+            console.log('Updated Post')
+        }
+    })
+}
+
+const deletePost = async (req, res) => {
+    console.log('Running delete')
+    Post.findOneAndDelete({_id:req.post._id}, (error) => {
+        if (error) {
+            console.log(error)
+            res.json(error)
+        }
+        else {
+            User.updateOne({name: req.user.name}, {$pull: {posts: {_id: req.post._id}}})
+        }
     })
 }
 
@@ -37,4 +80,11 @@ const getAllPosts = async (req, res) => {
     })
 }
 
+module.exports = {
+    index,
+    savePost, 
+    editPost,
+    deletePost,
+    getAllPosts
+}
 
