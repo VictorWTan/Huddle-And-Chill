@@ -6,7 +6,7 @@ export default function SinglePost({ post, user}) {
     const [edit, setEdit] = useState(false)
     const [content, setContent] = useState('')
 
-    const onClick = () => {
+    const onEditClick = () => {
         setEdit(true)
     }
 
@@ -20,6 +20,11 @@ export default function SinglePost({ post, user}) {
         setEdit(false)
     }
 
+    const handleDelete = async (event) => {
+        event.preventDefault()
+        postsAPI.deletePost(post._id)
+    }
+
     return (
         <>
             <span>
@@ -30,13 +35,14 @@ export default function SinglePost({ post, user}) {
                 {post.content}
             </div>
             <br />
-            <button onClick={onClick}>Edit</button>
+            <button onClick={onEditClick}>Edit</button>
             {edit && 
             <form onSubmit={handleSubmit}>
                 <input type="text" value={content} onChange={handleChange}/>
                 <input type="submit" value="Submit" />
             </form> 
             }
+            <button onClick={handleDelete}>Delete</button>
             <br />
         </>
     )
