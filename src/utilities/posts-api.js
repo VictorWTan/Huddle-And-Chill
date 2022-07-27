@@ -10,7 +10,7 @@ export function getAll() {
 
 export function getOnePost(id){
     console.log('Getting one post')
-    return sendRequest(`${BASE_URL}/${id}}`)
+    return sendRequest(`${BASE_URL}/${id}`)
 }
 
 export function updatePost(id, content) {

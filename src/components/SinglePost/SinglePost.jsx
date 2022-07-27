@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import * as postsAPI from '../../utilities/posts-api'
 import './SinglePost.css'
+import { UserContext } from '../../pages/App/App'
 
-export default function SinglePost({ post, user}) {
+
+export default function SinglePost({ post}) {
 
     const [edit, setEdit] = useState(false)
     const [content, setContent] = useState('')
+    const user = useContext(UserContext)
 
     const onEditClick = () => {
         setEdit(true)
@@ -36,14 +39,14 @@ export default function SinglePost({ post, user}) {
                 {post.content}
             </div>
             <br />
-            <button onClick={onEditClick}>Edit</button>
+            {user.name == post.name && <button onClick={onEditClick}>Edit</button>}
             {edit && 
             <form onSubmit={handleSubmit}>
                 <input type="text" value={content} onChange={handleChange}/>
                 <input type="submit" value="Submit" />
             </form> 
             }
-            <button onClick={handleDelete}>Delete</button>
+            {user.name == post.name && <button onClick={handleDelete}>Delete</button>}
             <br />
         </div>
     )
