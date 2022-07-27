@@ -58,7 +58,7 @@ export default function App() {
           <UserContext.Provider value={user}>
             <NavBar setUser={setUser} />
             <Routes>
-              <Route path="/" element={<Home post={posts} setPost={setPosts} />} />
+              <Route path="/" element={<Home posts={posts} setPosts={setPosts} />} />
             </Routes>
           </UserContext.Provider>
         </>
