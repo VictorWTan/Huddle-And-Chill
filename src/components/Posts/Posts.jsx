@@ -12,12 +12,12 @@ export default function Posts({user, post}) {
             console.log(`Getting posts from posts.jsx ${allPosts}`)
             setPosts(allPosts)
         })()
-    }, [])
+    }, [post])
 
     return (
         <>
            <div>
-                {posts.map((post) => {
+                {posts.slice(0).reverse().map((post) => {
                     return <SinglePost post={post} key={post._id} user={user}/>
                 })}
            </div>

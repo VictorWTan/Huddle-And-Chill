@@ -17,7 +17,7 @@ export const UserContext = createContext()
 export default function App() {
 
   const [user, setUser] = useState(getUser())
-  const [post, setPost] = useState('')
+  const [posts, setPosts] = useState([])
   const [position, setPosition] = useState(null)
 
   const options = {
@@ -46,10 +46,10 @@ export default function App() {
     })
   }
   
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success, error, options);
-    gapi.load('client:auth2', start)
-  }, [])
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(success, error, options);
+  //   gapi.load('client:auth2', start)
+  // }, [])
 
   return (
     <main className="App">
@@ -58,7 +58,7 @@ export default function App() {
           <UserContext.Provider value={user}>
             <NavBar setUser={setUser} />
             <Routes>
-              <Route path="/" element={<Home post={post} setPost={setPost} />} />
+              <Route path="/" element={<Home post={posts} setPost={setPosts} />} />
             </Routes>
           </UserContext.Provider>
         </>
