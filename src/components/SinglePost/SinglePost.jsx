@@ -30,7 +30,7 @@ export default function SinglePost({ post}) {
     }
 
     return (
-        <div className="my-5 mx-30 border border-black flex flex-col justify-center self-center">
+        <div className="w-1/4 p-5 m-4 border border-black flex flex-col justify-center self-center">
             <span>
                 {post.name}
             </span>

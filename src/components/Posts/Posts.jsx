@@ -14,7 +14,7 @@ export default function Posts({user, posts, setPosts}) {
 
     return (
         <>
-           <div>
+           <div className='flex flex-col justify-center'>
                 {posts.slice(0).reverse().map((post) => {
                     return <SinglePost post={post} key={post._id} user={user}/>
                 })}
