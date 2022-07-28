@@ -1,4 +1,4 @@
-import { GoogleLogout } from 'react-google-login'
+import { googleLogout } from '@react-oauth/google'
 
 const clientId = '1051610878268-8bl7kndmmufcjarcv9u6h92m3bs1gh11.apps.googleusercontent.com'
 
@@ -10,7 +10,7 @@ export default function GoogleLogoutButton() {
 
     return(
         <div id="google-logout">
-            <GoogleLogout
+            <googleLogout
                 clientId={clientId}
                 buttonText={"Logout"}
                 onLogoutSuccess={onSuccess}        

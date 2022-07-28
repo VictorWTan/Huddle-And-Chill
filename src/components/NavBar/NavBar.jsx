@@ -1,4 +1,3 @@
-import '../NavBar/NavBar.css'
 import { Link } from 'react-router-dom'
 import * as userService from '../../utilities/users-service'
 import { UserContext } from '../../pages/App/App'
@@ -14,7 +13,7 @@ export default function NavBar({ setUser }) {
   }
 
   return (
-    <nav>
+    <nav className='mr-52 flex justify-end'>
       <Link to="/">Home</Link>
       &nbsp; | &nbsp;
       Hello, {user.name}

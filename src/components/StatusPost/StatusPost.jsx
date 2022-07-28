@@ -14,12 +14,12 @@ export default function StatusPost({post, setPost, user}) {
     }
 
     return (
-        <>
+        <div className="flex flex-col justify-center">
             <div>Profile Picture</div>
             <form onSubmit={handleSubmit}>
                 <textarea name="status-post" value={content} onChange={handleChange} cols="30" rows="10"></textarea>
                 <input type="submit" value="Post" />
             </form>
-        </>
+        </div>
     )
 }

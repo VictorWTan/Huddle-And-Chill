@@ -30,7 +30,7 @@ export default function SinglePost({ post}) {
     }
 
     return (
-        <div className="single-post">
+        <div className="my-5 mx-30 border border-black flex flex-col justify-center self-center">
             <span>
                 {post.name}
             </span>
@@ -39,14 +39,14 @@ export default function SinglePost({ post}) {
                 {post.content}
             </div>
             <br />
-            {user.name == post.name && <button onClick={onEditClick}>Edit</button>}
+            {user.name === post.name && <button className="edit-button" onClick={onEditClick}>Edit</button>}
             {edit && 
             <form onSubmit={handleSubmit}>
                 <input type="text" value={content} onChange={handleChange}/>
                 <input type="submit" value="Submit" />
             </form> 
             }
-            {user.name == post.name && <button onClick={handleDelete}>Delete</button>}
+            {user.name === post.name && <button className="delete-button"onClick={handleDelete}>Delete</button>}
             <br />
         </div>
     )

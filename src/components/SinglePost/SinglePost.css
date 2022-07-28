@@ -6,3 +6,8 @@
     flex-direction: column;
     align-self: center;
 }
+
+.single-post button{
+    padding: 5px 30px;
+    margin: 0px 150px;
+}

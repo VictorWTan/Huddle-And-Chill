@@ -10,7 +10,7 @@ export default function Posts({user, posts, setPosts}) {
             console.log(`Getting posts from posts.jsx ${JSON.stringify(allPosts)}`)
             setPosts(allPosts)
         })()
-    }, [])
+    }, [setPosts])
 
     return (
         <>

@@ -8,7 +8,8 @@ import Home from '../Home/Home'
 import GoogleLoginButton from '../../components/GoogleLoginButton/GoogleLoginButton'
 import GoogleLogoutButton from '../../components/GoogleLogoutButton/GoogleLogoutButton'
 import { gapi } from 'gapi-script'
-import { GoogleLogout } from 'react-google-login';
+import { googleLogout } from '@react-oauth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const clientId = '1051610878268-8bl7kndmmufcjarcv9u6h92m3bs1gh11.apps.googleusercontent.com'
 
@@ -52,7 +53,7 @@ export default function App() {
   // }, [])
 
   return (
-    <main className="App">
+    <GoogleOAuthProvider clientId="'1051610878268-8bl7kndmmufcjarcv9u6h92m3bs1gh11.apps.googleusercontent.com'">
       {user ?
         <>
           <UserContext.Provider value={user}>
@@ -69,7 +70,7 @@ export default function App() {
           <GoogleLogoutButton setUser={setUser}/>
         </>
       }
-    </main>
+    </GoogleOAuthProvider>
   );
 }
 
