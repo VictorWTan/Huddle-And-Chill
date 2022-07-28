@@ -8,6 +8,7 @@ export default function SinglePost({ post}) {
 
     const [edit, setEdit] = useState(false)
     const [content, setContent] = useState('')
+    const [replying, setReplying] = useState(false)
     const user = useContext(UserContext)
 
     const onEditClick = () => {
@@ -39,15 +40,16 @@ export default function SinglePost({ post}) {
                 {post.content}
             </div>
             <br />
-            {user.name === post.name && <button className="edit-button" onClick={onEditClick}>Edit</button>}
+            {user.name === post.name && <button className="my-5 px-5 border border-black rounded" onClick={onEditClick}>Edit</button>}
             {edit && 
             <form onSubmit={handleSubmit}>
                 <input type="text" value={content} onChange={handleChange}/>
                 <input type="submit" value="Submit" />
             </form> 
             }
-            {user.name === post.name && <button className="delete-button"onClick={handleDelete}>Delete</button>}
+            {user.name === post.name && <button className="my-5 px-5 border border-black rounded" onClick={handleDelete}>Delete</button>}
             <br />
+            {user.name !== post.name && <button className="my-5 px-5 border border-black rounded" >Reply</button>}
         </div>
     )
 }
