@@ -4,7 +4,7 @@ const { Schema, model } = mongoose
 const replySchema = new Schema({
     name: String,
     content: String,
-    likes: Number
+    likes: {type: Number, default: 0}
 }, {
     timestamps: true
 })

@@ -100,12 +100,42 @@ const getAllPosts = async (req, res) => {
     })
 }
 
+const addReply = async (req, res) => {
+    console.log('Adding Reply')
+    Post.updateOne(req.params.id, {$push: {'replies': {name: req.body.name, content: req.body.content}}}, (error, data) => {
+        if(error) {
+            console.log(error)
+            res.json(error)
+        }
+        else {
+            console.log(data)
+            res.json(data)
+        }
+    })
+} 
+
+const getReplies = async (req, res) => {
+    console.log('Getting all replies')
+    Post.findById({_id: req.params.id}, {replies: 1}, (error, data) => {
+        if (error) {
+            console.log(error)
+            res.json(error)
+        }
+        else {
+            console.log(data)
+            res.json(data)
+        }
+    })
+}
+
 module.exports = {
     index,
     show,
     savePost, 
     editPost,
     deletePost,
-    getAllPosts
+    getAllPosts,
+    addReply,
+    getReplies
 }
 

@@ -12,4 +12,8 @@ router.put('/:id', postsCtrl.editPost)
 
 router.delete('/:id', postsCtrl.deletePost)
 
+router.get('/reply/:id', postsCtrl.getReplies)
+
+router.post('/reply/:id', postsCtrl.addReply)
+
 module.exports = router

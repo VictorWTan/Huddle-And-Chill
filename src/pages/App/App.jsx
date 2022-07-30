@@ -47,10 +47,10 @@ export default function App() {
     })
   }
   
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(success, error, options);
-  //   gapi.load('client:auth2', start)
-  // }, [])
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+    gapi.load('client:auth2', start)
+  }, [])
 
   return (
     <GoogleOAuthProvider clientId="'1051610878268-8bl7kndmmufcjarcv9u6h92m3bs1gh11.apps.googleusercontent.com'">
