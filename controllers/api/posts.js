@@ -73,8 +73,21 @@ const editPost = async (req, res) => {
 
 const deletePost = async (req, res) => {
     console.log('Running delete')
-    console.log(req.params.id)
     Post.findOneAndDelete({_id:req.params.id}, (error, data) => {
+        if (error) {
+            console.log(error)
+            res.json(error)
+        }
+        else {
+            console.log(data)
+            res.json(data)
+        }
+    })
+}
+
+const deletePostFromUser = async(req, res) => {
+    console.log('Deleting Post Id from User')
+    User.updateOne({name: req.user.name}, {$pull: {posts: req.params.id}}, (error, data) => {
         if (error) {
             console.log(error)
             res.json(error)
@@ -134,6 +147,7 @@ module.exports = {
     deletePost,
     getAllPosts,
     addReply,
-    getReplies
+    getReplies,
+    deletePostFromUser
 }
 

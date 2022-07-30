@@ -53,3 +53,8 @@ export function deletePost(id){
     console.log('Removing Post')
     return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }
+
+export function deletePostFromUser(id){
+    console.log('Removing Post ID from User.posts')
+    return sendRequest(`${BASE_URL}/userpost/${id}`,'DELETE')
+}

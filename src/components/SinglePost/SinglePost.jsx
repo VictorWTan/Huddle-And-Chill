@@ -39,6 +39,7 @@ export default function SinglePost({ post }) {
     const handleDelete = async (event) => {
         event.preventDefault()
         postsAPI.deletePost(post._id)
+        postsAPI.deletePostFromUser(post._id)
     }
 
     useEffect(() => {
