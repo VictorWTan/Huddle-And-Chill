@@ -8,11 +8,6 @@ export function getAll() {
     return sendRequest(`${BASE_URL}`);
 }
 
-export function getPostReplies(id) {
-    console.log('Getting all replies from post')
-    return sendRequest(`${BASE_URL}/reply/${id}`)
-}
-
 export function getOnePost(id){
     console.log('Getting one post')
     return sendRequest(`${BASE_URL}/${id}`)
@@ -46,7 +41,7 @@ export function addToReplies(id, name, content) {
         content: content
     }
     console.log(data)
-    return sendRequest(`${BASE_URL}/reply/${id}`)
+    return sendRequest(`${BASE_URL}/reply/${id}`, `POST`, data)
 }
 
 export function deletePost(id){

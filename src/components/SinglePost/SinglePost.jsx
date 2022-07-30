@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from 'react'
 import * as postsAPI from '../../utilities/posts-api'
 import './SinglePost.css'
 import { UserContext } from '../../pages/App/App'
+import Replies from '../Replies/Replies'
 
 
 export default function SinglePost({ post }) {
@@ -9,6 +10,7 @@ export default function SinglePost({ post }) {
     const [edit, setEdit] = useState(false)
     const [content, setContent] = useState('')
     const [replying, setReplying] = useState(false)
+    const [replyContent, setReplyContent] = useState('')
     const user = useContext(UserContext)
 
     const onEditClick = () => {
@@ -23,7 +25,11 @@ export default function SinglePost({ post }) {
     const handleSubmitReply = (event) => {
         event.preventDefault()
         handleReply()
-        postsAPI.addToReplies(post._id, user.name, content)
+        postsAPI.addToReplies(post._id, user.name, replyContent)
+    }
+
+    const handleReplyContent = (event) => {
+        setReplyContent(event.target.value)
     }
 
     const handleChange = (event) => {
@@ -44,9 +50,9 @@ export default function SinglePost({ post }) {
 
     useEffect(() => {
         (async() => {
-            const postReplies = await postsAPI.getPostReplies(post._id)
+            console.log(post.replies)
         })()
-    },[])
+    }, [])
 
     return (
         <>
@@ -70,14 +76,16 @@ export default function SinglePost({ post }) {
                 <br />
                 {replying &&
                     <form className="flex flex-col" onSubmit={handleSubmitReply}>
-                        <textarea className="border border-black flex flex-col" name="reply-form" cols="30" rows="10"></textarea>
+                        <textarea className="border border-black flex flex-col" value={replyContent} onChange={handleReplyContent} cols="30" rows="10"></textarea>
                         <input className="flex justify-end" type="submit" value="Submit" />
                     </form>
                 }
                 {Boolean(user.name !== post.name & !replying) && <button onClick={handleReply} className="my-5 px-5 border border-black rounded" >Reply</button>}
             </div>
-            <div>
-                
+            <div className="flex flex-col justify-center self-center w-1/4 p-5 border border-black">
+                {post.replies.map((reply) => {
+                    return <Replies reply={reply}/>
+                })}
             </div>
         </>
     )

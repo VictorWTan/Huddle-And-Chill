@@ -115,19 +115,8 @@ const getAllPosts = async (req, res) => {
 
 const addReply = async (req, res) => {
     console.log('Adding Reply')
-    Post.findById(req.params.id, (error, post) => {
-        let reply = new Reply();
-        reply.name = req.body.name
-        reply.content = req.body.content
-        post.replies.push(reply)
-        post.save()
-        console.log(req.body)
-    })
-} 
-
-const getReplies = async (req, res) => {
-    console.log('Getting all replies')
-    Post.findById({_id: req.params.id}, {replies: 1}, (error, data) => {
+    console.log(req.body)
+    Post.updateOne({_id: req.params.id}, {$push: {replies: {name: req.body.name, content: req.body.content}}}, (error, data) => {
         if (error) {
             console.log(error)
             res.json(error)
@@ -137,7 +126,7 @@ const getReplies = async (req, res) => {
             res.json(data)
         }
     })
-}
+} 
 
 module.exports = {
     index,
@@ -147,7 +136,6 @@ module.exports = {
     deletePost,
     getAllPosts,
     addReply,
-    getReplies,
     deletePostFromUser
 }
 
