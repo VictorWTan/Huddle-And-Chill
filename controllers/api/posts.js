@@ -1,5 +1,6 @@
 const Post = require('../../models/post')
 const User = require('../../models/user')
+const Reply = require('../../models/post')
 
 const index = async (req, res) => {
     console.log('Get current user posts')
@@ -79,9 +80,8 @@ const deletePost = async (req, res) => {
             res.json(error)
         }
         else {
-            console.log('Post Deleted')
+            console.log(data)
             res.json(data)
-            User.updateOne({name: req.user.name}, {$pull: {posts: {_id: req.params.id}}})
         }
     })
 }
@@ -102,15 +102,13 @@ const getAllPosts = async (req, res) => {
 
 const addReply = async (req, res) => {
     console.log('Adding Reply')
-    Post.updateOne(req.params.id, {$push: {'replies': {name: req.body.name, content: req.body.content}}}, (error, data) => {
-        if(error) {
-            console.log(error)
-            res.json(error)
-        }
-        else {
-            console.log(data)
-            res.json(data)
-        }
+    Post.findById(req.params.id, (error, post) => {
+        let reply = new Reply();
+        reply.name = req.body.name
+        reply.content = req.body.content
+        post.replies.push(reply)
+        post.save()
+        console.log(req.body)
     })
 } 
 

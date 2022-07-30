@@ -7,7 +7,6 @@ export default function Posts({user, posts, setPosts}) {
     useEffect(() => {
         (async () => {
             const allPosts = await postsAPI.getAll()
-            console.log(`Getting posts from posts.jsx ${JSON.stringify(allPosts)}`)
             setPosts(allPosts)
         })()
     }, [setPosts])

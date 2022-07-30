@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import * as postsAPI from '../../utilities/posts-api'
+import { UserContext } from '../../pages/App/App'
 
-export default function StatusPost({post, setPost, user}) {
+export default function StatusPost({post, setPost}) {
     const [content, setContent] = useState('')
+    
+    const user = useContext(UserContext)
 
     const handleChange = (event) => {
         setContent(event.target.value)
@@ -10,7 +13,7 @@ export default function StatusPost({post, setPost, user}) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        postsAPI.addToPosts(user, content)
+        postsAPI.addToPosts(user.name, content)
     }
 
     return (

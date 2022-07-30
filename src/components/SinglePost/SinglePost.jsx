@@ -23,7 +23,7 @@ export default function SinglePost({ post }) {
     const handleSubmitReply = (event) => {
         event.preventDefault()
         handleReply()
-        postsAPI.addToReplies(post._id, user, content)
+        postsAPI.addToReplies(post._id, user.name, content)
     }
 
     const handleChange = (event) => {
@@ -44,7 +44,6 @@ export default function SinglePost({ post }) {
     useEffect(() => {
         (async() => {
             const postReplies = await postsAPI.getPostReplies(post._id)
-            console.log(postReplies)
         })()
     },[])
 
