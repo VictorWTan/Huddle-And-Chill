@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
 import * as postsAPI from '../../utilities/posts-api'
-import './SinglePost.css'
 import { UserContext } from '../../pages/App/App'
 import Replies from '../Replies/Replies'
 
@@ -49,7 +48,7 @@ export default function SinglePost({ post }) {
     }
 
     useEffect(() => {
-        (async() => {
+        (async () => {
             console.log(post.replies)
         })()
     }, [])
@@ -82,11 +81,10 @@ export default function SinglePost({ post }) {
                 }
                 {Boolean(user.name !== post.name & !replying) && <button onClick={handleReply} className="my-5 px-5 border border-black rounded" >Reply</button>}
             </div>
-            <div className="flex flex-col justify-center self-center w-1/4 p-5 border border-black">
-                {post.replies.map((reply) => {
-                    return <Replies reply={reply}/>
-                })}
-            </div>
+            {post.replies.map((reply) => {
+                return <Replies reply={reply} />
+            })}
+
         </>
     )
 }
