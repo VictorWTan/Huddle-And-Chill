@@ -1,4 +1,3 @@
-import './App.css';
 import { useState, createContext, useEffect } from 'react'
 import AuthPage from '../AuthPage/AuthPage'
 import { Routes, Route } from 'react-router-dom'
@@ -66,8 +65,6 @@ export default function App() {
         :
         <>
           <AuthPage setUser={setUser} />
-          <GoogleLoginButton setUser={setUser}/>
-          <GoogleLogoutButton setUser={setUser}/>
         </>
       }
     </GoogleOAuthProvider>

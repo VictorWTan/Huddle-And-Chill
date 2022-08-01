@@ -13,7 +13,7 @@ export default function GoogleLoginButton({setUser}) {
     }
 
     return (
-        <div id="google-login" className='w-1/4 m-0 flex justify-center self-center'>
+        <div id="google-login" className='m-0 flex justify-center self-center'>
             <GoogleLogin
                 clientId={clientId}
                 buttonText="Login"
