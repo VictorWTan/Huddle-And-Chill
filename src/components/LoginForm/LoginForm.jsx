@@ -39,14 +39,14 @@ export default function LoginForm({ setUser }) {
 
   return (
     <div className='flex flex-col'>
-      <span className='font-bold flex justify-center self-center mr-12'>Already have an account?</span>
+      <span className='font-bold flex justify-center self-center mr-12 text-black'>Already have an account?</span>
       {!signInClick ?
       <button className="my-5 px-5 py-2 border border-gray-700 rounded-3xl w-1/3 justify-center self-center hover:scale-105 duration-300 text-sky-600" onClick={onSignInClick}>Sign In</button>
         :
       <div className="mt-6 flex flex-col" onSubmit={handleSubmit}>
           <form className="flex flex-col" autoComplete="off" >
-            <input className="m-2 px-5 py-2 border border-gray-600 rounded-lg w-1/3 self-center bg-black" placeholder="Email" type="text" name="email" value={credentials.email} onChange={handleChange} required />
-            <input className="m-2 px-5 py-2 border border-gray-600 rounded-lg w-1/3 self-center bg-black" placeholder="Password" type="password" name="password" value={credentials.password} onChange={handleChange} required />
+            <input className="m-2 px-5 py-2 border border-gray-600 rounded-lg w-1/3 self-center" placeholder="Email" type="text" name="email" value={credentials.email} onChange={handleChange} required />
+            <input className="m-2 px-5 py-2 border border-gray-600 rounded-lg w-1/3 self-center" placeholder="Password" type="password" name="password" value={credentials.password} onChange={handleChange} required />
             <button className="my-5 px-5 py-2 border border-gray-700 rounded-3xl w-1/3 self-center hover:scale-105 duration-300 text-sky-600" type="submit">Sign In</button>
           </form>
       </div>
