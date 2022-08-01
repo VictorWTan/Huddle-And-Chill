@@ -57,7 +57,7 @@ export default function App() {
       {user ?
         <>
           <UserContext.Provider value={user}>
-            <div className='flex flex-row'>
+            <div className='flex flex-row h-screen'>
               <NavBar setUser={setUser} />
               <Routes>
                 <Route path="/" element={<Home posts={posts} setPosts={setPosts} />} />
