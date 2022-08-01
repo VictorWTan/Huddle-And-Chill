@@ -1,9 +1,23 @@
-export default function Replies({reply}) {
+import { useState } from "react"
+
+export default function Replies({ reply }) {
+
+  const [showReplies, setShowReplies] = useState(false)
+
+  const handleShowClick = () => {
+    setShowReplies(!showReplies)
+  }
+
   return (
-    <div className="flex flex-col justify-center self-center w-1/4 p-5 border border-black">
-      <span>{reply.name}</span>
-      <br />
-      <span>{reply.content}</span>
-    </div>
+    <>
+      <button className='border border-black border-t-0' onClick={handleShowClick}>...</button>
+    { showReplies &&
+      <div className="flex flex-col justify-center self-center w-full p-5 border border-black border-t-0">
+        <span>{reply.name}</span>
+        <br />
+        <span>{reply.content}</span>
+      </div>
+    } 
+    </>
   )
 }

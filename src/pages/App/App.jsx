@@ -9,6 +9,7 @@ import GoogleLogoutButton from '../../components/GoogleLogoutButton/GoogleLogout
 import { gapi } from 'gapi-script'
 import { googleLogout } from '@react-oauth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import EventsHappening from '../../components/EventsHappening/EventsHappening';
 
 const clientId = '1051610878268-8bl7kndmmufcjarcv9u6h92m3bs1gh11.apps.googleusercontent.com'
 
@@ -25,16 +26,16 @@ export default function App() {
     timeout: 5000,
     maximumAge: 0
   };
-  
+
   function success(pos) {
     const crd = pos.coords;
-  
+
     console.log('Your current position is:');
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
   }
-  
+
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
@@ -45,7 +46,7 @@ export default function App() {
       scope: ""
     })
   }
-  
+
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition(success, error, options);
   //   gapi.load('client:auth2', start)
@@ -56,10 +57,13 @@ export default function App() {
       {user ?
         <>
           <UserContext.Provider value={user}>
-            <NavBar setUser={setUser} />
-            <Routes>
-              <Route path="/" element={<Home posts={posts} setPosts={setPosts} />} />
-            </Routes>
+            <div className='flex flex-row'>
+              <NavBar setUser={setUser} />
+              <Routes>
+                <Route path="/" element={<Home posts={posts} setPosts={setPosts} />} />
+              </Routes>
+              <EventsHappening/>
+            </div>
           </UserContext.Provider>
         </>
         :

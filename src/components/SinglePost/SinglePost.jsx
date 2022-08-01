@@ -13,12 +13,11 @@ export default function SinglePost({ post }) {
     const user = useContext(UserContext)
 
     const onEditClick = () => {
-        setEdit(true)
+        setEdit(!edit)
     }
 
     const handleReply = () => {
-        if (!replying) setReplying(true)
-        else setReplying(false)
+        setReplying(!replying)
     }
 
     const handleSubmitReply = (event) => {
@@ -38,7 +37,7 @@ export default function SinglePost({ post }) {
     const handleSubmit = async (event) => {
         event.preventDefault()
         postsAPI.updatePost(post._id, content)
-        setEdit(false)
+        setEdit(!edit)
     }
 
     const handleDelete = async (event) => {
@@ -51,35 +50,41 @@ export default function SinglePost({ post }) {
         (async () => {
             console.log(post.replies)
         })()
-    }, [])
+    }, [post.replies])
 
     return (
         <>
-            <div className="w-1/4 p-5 m-4 border border-black flex flex-col justify-center self-center">
-                <span>
+            <div className="w-full p-5 border border-black border-t-0 flex flex-col justify-center self-center">
+                <span className='font-bold'>
                     {post.name}
                 </span>
                 <br />
-                <div>
+                <div className='indent-2'>
                     {post.content}
                 </div>
                 <br />
-                {user.name === post.name && <button className="my-5 px-5 border border-black rounded" onClick={onEditClick}>Edit</button>}
+                {Boolean(user.name === post.name & !edit) && <button className="my-5 px-5 border border-black rounded w-1/4 self-center" onClick={onEditClick}>Edit</button>}
                 {edit &&
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" value={content} onChange={handleChange} />
-                        <input type="submit" value="Submit" />
+                    <>
+                    <button className="flex justify-end" onClick={onEditClick}>X</button>
+                    <form className="flex flex-col" onSubmit={handleSubmit}>
+                        <textarea className="border border-black" placeholder="Editing post"value={content} onChange={handleChange}cols="30" rows="10"></textarea>
+                        <input className="my-5 px-5 border border-black rounded w-1/4 self-center" type="submit" value="Submit" />
                     </form>
+                    </>
                 }
-                {user.name === post.name && <button className="my-5 px-5 border border-black rounded" onClick={handleDelete}>Delete</button>}
+                {user.name === post.name && <button className="my-5 px-5 border border-black rounded w-1/4 self-center" onClick={handleDelete}>Delete</button>}
                 <br />
                 {replying &&
+                    <>
+                    <button className="flex justify-end" onClick={handleReply}>X</button>
                     <form className="flex flex-col" onSubmit={handleSubmitReply}>
-                        <textarea className="border border-black flex flex-col" value={replyContent} onChange={handleReplyContent} cols="30" rows="10"></textarea>
-                        <input className="flex justify-end" type="submit" value="Submit" />
+                        <textarea className="border border-black flex flex-col" placeholder={`Replying to ${post.name}`}value={replyContent} onChange={handleReplyContent} cols="30" rows="10"></textarea>
+                        <input className="my-5 px-5 border border-black rounded w-1/4 self-center" type="submit" value="Submit" />
                     </form>
+                    </>
                 }
-                {Boolean(user.name !== post.name & !replying) && <button onClick={handleReply} className="my-5 px-5 border border-black rounded" >Reply</button>}
+                {Boolean(user.name !== post.name & !replying) && <button onClick={handleReply} className="my-5 px-5 border border-black rounded w-1/4 self-center" >Reply</button>}
             </div>
             {post.replies.map((reply) => {
                 return <Replies reply={reply} />
