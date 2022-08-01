@@ -54,7 +54,7 @@ export default function SinglePost({ post }) {
 
     return (
         <>
-            <div className="w-full p-5 border border-black border-t-0 flex flex-col justify-center self-center">
+            <div className="w-full p-5 border border-slate-500 border-t-0 flex flex-col justify-center self-center">
                 <span className='font-bold'>
                     {post.name}
                 </span>
@@ -63,28 +63,28 @@ export default function SinglePost({ post }) {
                     {post.content}
                 </div>
                 <br />
-                {Boolean(user.name === post.name & !edit) && <button className="my-5 px-5 border border-black rounded w-1/4 self-center" onClick={onEditClick}>Edit</button>}
+                {Boolean(user.name === post.name & !edit) && <button className="my-5 px-5 border border-slate-500 rounded w-1/4 self-center" onClick={onEditClick}>Edit</button>}
                 {edit &&
                     <>
                     <button className="flex justify-end" onClick={onEditClick}>X</button>
                     <form className="flex flex-col" onSubmit={handleSubmit}>
-                        <textarea className="border border-black" placeholder="Editing post"value={content} onChange={handleChange}cols="30" rows="10"></textarea>
-                        <input className="my-5 px-5 border border-black rounded w-1/4 self-center" type="submit" value="Submit" />
+                        <textarea className="border border-slate-500" placeholder="Editing post"value={content} onChange={handleChange}cols="30" rows="10"></textarea>
+                        <input className="my-5 px-5 border border-slate-500 rounded w-1/4 self-center" type="submit" value="Submit" />
                     </form>
                     </>
                 }
-                {user.name === post.name && <button className="my-5 px-5 border border-black rounded w-1/4 self-center" onClick={handleDelete}>Delete</button>}
+                {user.name === post.name && <button className="my-5 px-5 border border-slate-500 rounded w-1/4 self-center" onClick={handleDelete}>Delete</button>}
                 <br />
                 {replying &&
                     <>
                     <button className="flex justify-end" onClick={handleReply}>X</button>
                     <form className="flex flex-col" onSubmit={handleSubmitReply}>
-                        <textarea className="border border-black flex flex-col" placeholder={`Replying to ${post.name}`}value={replyContent} onChange={handleReplyContent} cols="30" rows="10"></textarea>
-                        <input className="my-5 px-5 border border-black rounded w-1/4 self-center" type="submit" value="Submit" />
+                        <textarea className="border border-slate-500 flex flex-col" placeholder={`Replying to ${post.name}`}value={replyContent} onChange={handleReplyContent} cols="30" rows="10"></textarea>
+                        <input className="my-5 px-5 border border-slate-500 rounded w-1/4 self-center" type="submit" value="Submit" />
                     </form>
                     </>
                 }
-                {Boolean(user.name !== post.name & !replying) && <button onClick={handleReply} className="my-5 px-5 border border-black rounded w-1/4 self-center" >Reply</button>}
+                {Boolean(user.name !== post.name & !replying) && <button onClick={handleReply} className="my-5 px-5 border border-slate-500 rounded w-1/4 self-center" >Reply</button>}
             </div>
             {post.replies.map((reply) => {
                 return <Replies reply={reply} />
