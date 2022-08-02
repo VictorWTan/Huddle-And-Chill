@@ -51,7 +51,7 @@ export default function LoginForm({ setUser }) {
           </form>
       </div>
       }
-      <p className="error-message">&nbsp;{error}</p>
+      <p className="text-black">&nbsp;{error}</p>
     </div>
   );
 }
