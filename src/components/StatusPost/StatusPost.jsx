@@ -14,6 +14,7 @@ export default function StatusPost({ post, setPost }) {
     const handleSubmit = (event) => {
         event.preventDefault()
         postsAPI.addToPosts(user.name, content)
+        setContent('')
     }
 
     return (
