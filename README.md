@@ -43,3 +43,7 @@ Icon Scout and The Noun Project were used to procure free icons to use. I am pla
 [Tailwind CSS](https://tailwindcss.com/)
 
 Tailwind CSS was used to style everything in classname making importing css files and having to deal with css conflicts irrelevant.
+
+[Heroku](heroku.com)
+
+Heroku was used to deploy this web-application.
