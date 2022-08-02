@@ -16,6 +16,14 @@ The app should take the user's location and search for nearby events. Users uplo
 
 ![ERD](assets/ERD.png)
 
+![ActualModels](assets/actualmodel.png)
+
 <h1><strong>Wireframe</strong></h1>
 
 ![Wireframe](assets/Wireframe.png)
+
+
+<h1><strong>Future Goals</strong></h1>
+
+For my future goals, I want to add Google Maps and add functionality to my posts where I can pin locations and add event times. Once event times pass, they're deleted after a day or archived. I want to implement a search by location feature, and instant messaging using firebase between users.
+
