@@ -27,3 +27,11 @@ The app should take the user's location and search for nearby events. Users uplo
 
 For my future goals, I want to add Google Maps and add functionality to my posts where I can pin locations and add event times. Once event times pass, they're deleted after a day or archived. I want to implement a search by location feature, and instant messaging using firebase between users.
 
+[Trello Link](https://trello.com/b/PYDkvOBz/huddle-and-chill)
+
+I used trello for early organization of goals and approach towards the code.
+
+[Icon Scout](https://iconscout.com/)
+[Noun Project](https://thenounproject.com/)
+
+Icon Scout and The Noun Project were used to procure free icons to use. I am planning to use them for small buttons like triple dot menus.
