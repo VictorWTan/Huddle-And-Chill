@@ -21,6 +21,10 @@ export default function App() {
   const [posts, setPosts] = useState([])
   const [position, setPosition] = useState(null)
 
+  const updatePost = (post) => {
+    setPosts(post)
+  }
+
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,

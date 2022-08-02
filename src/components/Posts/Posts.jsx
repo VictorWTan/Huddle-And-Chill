@@ -9,7 +9,7 @@ export default function Posts({user, posts, setPosts}) {
             const allPosts = await postsAPI.getAll()
             setPosts(allPosts)
         })()
-    }, [setPosts, posts])
+    }, [setPosts])
 
     return (
         <>
