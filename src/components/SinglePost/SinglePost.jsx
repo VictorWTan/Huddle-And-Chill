@@ -63,24 +63,24 @@ export default function SinglePost({ post }) {
                     {post.content}
                 </div>
                 <br />
-                {Boolean(user.name === post.name & !edit) && <button className="my-2 px-5 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" onClick={onEditClick}>Edit</button>}
+                {Boolean(user.name === post.name & !edit) && <button className="my-2 px-3 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" onClick={onEditClick}>Edit</button>}
                 {edit &&
                     <>
                         <button className="flex justify-end" onClick={onEditClick}>X</button>
                         <form className="flex flex-col" onSubmit={handleSubmit}>
                             <textarea className="border border-slate-500" placeholder="Editing post" value={content} onChange={handleChange} cols="30" rows="10"></textarea>
-                            <input className="my-2 px-5 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" type="submit" value="Submit" />
+                            <input className="my-2 px-3 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" type="submit" value="Submit" />
                         </form>
                     </>
                 }
-                {user.name === post.name && <button className="my-2 px-5 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" onClick={handleDelete}>Delete</button>}
+                {user.name === post.name && <button className="my-2 px-3 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" onClick={handleDelete}>Delete</button>}
                 <br />
                 {replying &&
                     <>
                         <button className="flex justify-end" onClick={handleReply}>X</button>
                         <form className="flex flex-col" onSubmit={handleSubmitReply}>
                             <textarea className="border border-slate-500 flex flex-col" placeholder={`Replying to ${post.name}`} value={replyContent} onChange={handleReplyContent} cols="30" rows="10"></textarea>
-                            <input className="my-2 px-5 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" type="submit" value="Submit" />
+                            <input className="my-2 px-3 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" type="submit" value="Submit" />
                         </form>
                     </>
                 }
