@@ -4,7 +4,7 @@ Huddle and Chill is a twitter like app where users can post events that they're 
 
 <h1><strong>Technologies Used</strong></h1>
 
-The app is created with the MERN infrastructure which comprises of Mongoose, Express, React, and Node.js. I am also using the Google OAuth React Login library.
+The app is created with the MERN infrastructure which comprises of Mongoose, Express, React, and Node.js. Everything was styled using Tailwind CSS. I am also using the Google OAuth React Login library.
 
 <h1><strong>User Experience</strong></h1>
 
@@ -37,3 +37,7 @@ I used trello for early organization of goals and approach towards the code.
 [Noun Project](https://thenounproject.com/)
 
 Icon Scout and The Noun Project were used to procure free icons to use. I am planning to use them for small buttons like triple dot menus.
+
+[Tailwind CSS](https://tailwindcss.com/)
+
+Tailwind CSS was used to style everything in classname making importing css files and having to deal with css conflicts irrelevant.
