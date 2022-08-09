@@ -4,10 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service'
 import Home from '../Home/Home'
-import GoogleLoginButton from '../../components/GoogleLoginButton/GoogleLoginButton'
-import GoogleLogoutButton from '../../components/GoogleLogoutButton/GoogleLogoutButton'
 import { gapi } from 'gapi-script'
-import { googleLogout } from '@react-oauth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import EventsHappening from '../../components/EventsHappening/EventsHappening';
 
@@ -45,19 +42,19 @@ export default function App() {
   }
 
   const start = () => {
-    gapi.client.init({
+    gapi.auth2.init({
       clientId: clientId,
       scope: ""
     })
   }
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(success, error, options);
-  //   gapi.load('client:auth2', start)
-  // }, [])
+  useEffect(() => {
+    // navigator.geolocation.getCurrentPosition(success, error, options);
+    gapi.load('client:auth2', start)
+  }, [])
 
   return (
-    <GoogleOAuthProvider clientId="'1051610878268-8bl7kndmmufcjarcv9u6h92m3bs1gh11.apps.googleusercontent.com'">
+    <GoogleOAuthProvider clientId="1051610878268-8bl7kndmmufcjarcv9u6h92m3bs1gh11.apps.googleusercontent.com">
       {user ?
         <>
           <UserContext.Provider value={user}>

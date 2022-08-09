@@ -4,6 +4,7 @@ const Reply = require('../../models/post')
 
 const index = async (req, res) => {
     console.log('Get current user posts')
+    // Find the user in the collection with the name matching session user
     User.findOne({name: req.user.name}, (error, user) => {
         // If error, show error
         if (error) {
@@ -19,6 +20,7 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
     console.log('Get single post')
+    // Find the post with the id in the parameters
     Post.findOne({_id: req.params.id}, (error, data) => {
         if (error) {
             console.log(error)
@@ -35,6 +37,8 @@ const savePost = async (req, res) => {
     console.log('Saving post')
     console.log(req.user.name)
     console.log(req.body)
+
+    // Create a post with the name of the user and the content from the form
     Post.create({
         name: req.user.name,
         content: req.body.content,
@@ -44,6 +48,7 @@ const savePost = async (req, res) => {
             res.json(error)
         }
         else {
+            // If it's created, push the id of the post into the user's post collection
             User.updateOne({name: req.user.name}, {$push : {posts: post._id}}, (error) => {
                 if (error) {
                     console.log(error)

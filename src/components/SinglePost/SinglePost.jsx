@@ -10,6 +10,7 @@ export default function SinglePost({ post }) {
     const [content, setContent] = useState('')
     const [replying, setReplying] = useState(false)
     const [replyContent, setReplyContent] = useState('')
+    const [replyClick, setReplyClick] = useState(false)
     const user = useContext(UserContext)
 
     const onEditClick = () => {
@@ -44,6 +45,10 @@ export default function SinglePost({ post }) {
         event.preventDefault()
         postsAPI.deletePost(post._id)
         postsAPI.deletePostFromUser(post._id)
+    }
+
+    const handleShowClick = () => {
+        setReplyClick(!replyClick)
     }
 
     useEffect(() => {
@@ -86,7 +91,8 @@ export default function SinglePost({ post }) {
                 }
                 {Boolean(user.name !== post.name & !replying) && <button onClick={handleReply} className="my-2 px-3 py-1 border border-black rounded-3xl font-bold w-1/6 self-end" >Reply</button>}
             </div>
-            {post.replies.map((reply) => {
+            {Boolean(post.replies.length > 0) && <button className='border border-slate-500 border-t-0' onClick={handleShowClick}>...</button>}
+            {replyClick && post.replies.map((reply) => {
                 return <Replies reply={reply} />
             })}
 
