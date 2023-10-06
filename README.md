@@ -4,6 +4,8 @@ Huddle and Chill is a twitter like app where users can post events that they're 
 
 [Deployment Link via Heroku](https://huddle-and-chill.herokuapp.com/)
 
+![Huddle](assets/huddle-ss.png)
+
 <h1><strong>Technologies Used</strong></h1>
 
 The app is created with the MERN infrastructure which comprises of Mongoose, Express, React, and Node.js. Everything was styled using Tailwind CSS. I am also using the Google OAuth React Login library.
